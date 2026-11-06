@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جميع الفعاليات | دليل فعاليات الجامعة الافتراضية</title>
+
+    <!-- أيقونة الموقع -->
+    <link rel="icon" type="image/jpeg" href="assets/img/favicon.jpg">
+
+    <!-- Bootstrap RTL من الـ CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+
+    <!-- خط Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- ملف التنسيق تبعنا -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- الهيدر: الشعار + شريط التنقل (نفسه بكل الصفحات) -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+
+                <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+                    <img src="assets/img/logo.jpg" alt="شعار الجامعة الافتراضية السورية" class="brand-logo">
+                    دليل فعاليات الجامعة الافتراضية
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-label="القائمة">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">الرئيسية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="events.html">كل الفعاليات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="event.html">تفاصيل الفعالية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">عن الدليل</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">اتصل بنا</a>
+                        </li>
+                    </ul>
+
+                    <!-- زر الوضع الليلي -->
+                    <button id="darkToggle" class="btn btn-sm btn-outline-light" type="button"
+                        aria-label="تبديل الوضع الليلي">🌙</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow-1">
+
+        <!-- عنوان الصفحة -->
+        <section class="welcome-section text-center">
+            <div class="container">
+                <h1>اكتشف جميع الفعاليات</h1>
+                <p class="lead mt-3">تصفح الفعاليات والأنشطة المتنوعة في الجامعة الافتراضية السورية</p>
+            </div>
+        </section>
+
+        <!-- شريط البحث والفلترة -->
+        <section class="py-5">
+            <div class="container">
+
+                <h2 class="section-title mb-4">ابحث عن فعالية</h2>
+
+                <div class="row g-3 mb-5">
+
+                    <div class="col-md-3">
+                        <input type="text" id="searchInput" class="form-control" placeholder="ابحث عن اسم الفعالية..."
+                            aria-label="بحث">
+                    </div>
+
+                    <div class="col-md-2">
+                        <select id="categoryFilter" class="form-select" aria-label="التصنيف">
+                            <option value="all">جميع التصنيفات</option>
+                            <option value="ثقافة">ثقافة</option>
+                            <option value="رياضة">رياضة</option>
+                            <option value="موسيقى">موسيقى</option>
+                            <option value="تعليم">تعليم</option>
+                            <option value="عائلي">عائلي</option>
+                            <option value="تقنية">تقنية</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <select id="locationFilter" class="form-select" aria-label="المكان">
+                            <option value="all">جميع الأماكن</option>
+                            <option value="دمشق">دمشق</option>
+                            <option value="حمص">حمص</option>
+                            <option value="حلب">حلب</option>
+                            <option value="أونلاين">أونلاين</option>
+                        </select>
+                    </div>
+
+                    <!-- فلتر التاريخ: بيعرض الفعاليات من التاريخ المختار وما بعد -->
+                    <div class="col-md-3">
+                        <input type="date" id="dateFilter" class="form-control" aria-label="من تاريخ"
+                            title="عرض الفعاليات من هذا التاريخ">
+                    </div>
+
+                    <div class="col-md-2">
+                        <button type="button" id="resetFilters" class="btn btn-outline-primary w-100">إعادة ضبط</button>
+                    </div>
+
+                </div>
+
+
+                <!-- كروت الفعاليات -->
+                <h2 class="section-title mb-4">الفعاليات المتاحة</h2>
+
+                <div class="row g-4" id="eventsContainer">
+
+                <div class="col-md-6 col-lg-4 event-card" data-category="ثقافة" data-location="دمشق" data-date="2026-11-10">
+                    <div class="card h-100 shadow-sm">
+                        <span class="today-badge d-none"></span>
+                        <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800" class="card-img-top" alt="أمسية ثقافية" loading="lazy">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge bg-primary mb-2 align-self-start">ثقافة</span>
+                            <h5 class="card-title">أمسية ثقافية</h5>
+                            <p class="mb-1">📅 التاريخ: 10 نوفمبر 2026</p>
+                            <p class="mb-2">📍 المكان: دمشق</p>
+                            <p class="card-text">أمسية ثقافية تجمع المهتمين بالأدب والفنون وتبادل الأفكار.</p>
+                            <a href="event.html?id=1" class="btn btn-primary mt-auto">التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 event-card" data-category="رياضة" data-location="حمص" data-date="2026-11-15">
+                    <div class="card h-100 shadow-sm">
+                        <span class="today-badge d-none"></span>
+                        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800" class="card-img-top" alt="اليوم الرياضي" loading="lazy">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge bg-success mb-2 align-self-start">رياضة</span>
+                            <h5 class="card-title">اليوم الرياضي</h5>
+                            <p class="mb-1">📅 التاريخ: 15 نوفمبر 2026</p>
+                            <p class="mb-2">📍 المكان: حمص</p>
+                            <p class="card-text">يوم رياضي مليء بالأنشطة والمسابقات الرياضية المتنوعة.</p>
+                            <a href="event.html?id=2" class="btn btn-primary mt-auto">التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 event-card" data-category="موسيقى" data-location="أونلاين" data-date="2026-11-20">
+                    <div class="card h-100 shadow-sm">
+                        <span class="today-badge d-none"></span>
+                        <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=800" class="card-img-top" alt="حفل موسيقي" loading="lazy">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge bg-warning text-dark mb-2 align-self-start">موسيقى</span>
+                            <h5 class="card-title">حفل موسيقي</h5>
+                            <p class="mb-1">📅 التاريخ: 20 نوفمبر 2026</p>
+                            <p class="mb-2">📍 المكان: أونلاين</p>
+                            <p class="card-text">لقاء موسيقي افتراضي للاستمتاع بالعروض والمواهب الفنية.</p>
+                            <a href="event.html?id=3" class="btn btn-primary mt-auto">التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 event-card" data-category="تعليم" data-location="حلب" data-date="2026-11-25">
+                    <div class="card h-100 shadow-sm">
+                        <span class="today-badge d-none"></span>
+                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800" class="card-img-top" alt="ورشة تعليمية" loading="lazy">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge bg-info text-dark mb-2 align-self-start">تعليم</span>
+                            <h5 class="card-title">ورشة تعليمية</h5>
+                            <p class="mb-1">📅 التاريخ: 25 نوفمبر 2026</p>
+                            <p class="mb-2">📍 المكان: حلب</p>
+                            <p class="card-text">ورشة تعليمية تهدف إلى تطوير المهارات والمعرفة لدى الطلاب.</p>
+                            <a href="event.html?id=4" class="btn btn-primary mt-auto">التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 event-card" data-category="تقنية" data-location="دمشق" data-date="2026-11-12">
+                    <div class="card h-100 shadow-sm">
+                        <span class="today-badge d-none"></span>
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800" class="card-img-top" alt="يوم التكنولوجيا" loading="lazy">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge bg-secondary mb-2 align-self-start">تقنية</span>
+                            <h5 class="card-title">يوم التكنولوجيا</h5>
+                            <p class="mb-1">📅 التاريخ: 12 نوفمبر 2026</p>
+                            <p class="mb-2">📍 المكان: دمشق</p>
+                            <p class="card-text">فعالية للتعرف على أحدث التقنيات والابتكارات الرقمية.</p>
+                            <a href="event.html?id=5" class="btn btn-primary mt-auto">التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 event-card" data-category="عائلي" data-location="حمص" data-date="2026-12-02">
+                    <div class="card h-100 shadow-sm">
+                        <span class="today-badge d-none"></span>
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800" class="card-img-top" alt="يوم العائلة الجامعي" loading="lazy">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge bg-danger mb-2 align-self-start">عائلي</span>
+                            <h5 class="card-title">يوم العائلة الجامعي</h5>
+                            <p class="mb-1">📅 التاريخ: 2 ديسمبر 2026</p>
+                            <p class="mb-2">📍 المكان: حمص</p>
+                            <p class="card-text">يوم ترفيهي يجمع الطلاب وعائلاتهم بأنشطة وألعاب ممتعة.</p>
+                            <a href="event.html?id=6" class="btn btn-primary mt-auto">التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 event-card" data-category="ثقافة" data-location="أونلاين" data-date="2026-11-08">
+                    <div class="card h-100 shadow-sm">
+                        <span class="today-badge d-none"></span>
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800" class="card-img-top" alt="ملتقى الإبداع الجامعي" loading="lazy">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge bg-primary mb-2 align-self-start">ثقافة</span>
+                            <h5 class="card-title">ملتقى الإبداع الجامعي</h5>
+                            <p class="mb-1">📅 التاريخ: 8 نوفمبر 2026</p>
+                            <p class="mb-2">📍 المكان: أونلاين</p>
+                            <p class="card-text">لقاء يجمع الطلاب لتبادل الأفكار والخبرات والإبداعات.</p>
+                            <a href="event.html?id=7" class="btn btn-primary mt-auto">التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 event-card" data-category="تعليم" data-location="أونلاين" data-date="2026-11-18">
+                    <div class="card h-100 shadow-sm">
+                        <span class="today-badge d-none"></span>
+                        <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=800" class="card-img-top" alt="ورشة المهارات الرقمية" loading="lazy">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge bg-info text-dark mb-2 align-self-start">تعليم</span>
+                            <h5 class="card-title">ورشة المهارات الرقمية</h5>
+                            <p class="mb-1">📅 التاريخ: 18 نوفمبر 2026</p>
+                            <p class="mb-2">📍 المكان: أونلاين</p>
+                            <p class="card-text">ورشة تعليمية لتطوير المهارات الرقمية لدى الطلاب.</p>
+                            <a href="event.html?id=8" class="btn btn-primary mt-auto">التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 event-card" data-category="موسيقى" data-location="دمشق" data-date="2026-11-28">
+                    <div class="card h-100 shadow-sm">
+                        <span class="today-badge d-none"></span>
+                        <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=800" class="card-img-top" alt="الأمسية الفنية الجامعية" loading="lazy">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge bg-warning text-dark mb-2 align-self-start">موسيقى</span>
+                            <h5 class="card-title">الأمسية الفنية الجامعية</h5>
+                            <p class="mb-1">📅 التاريخ: 28 نوفمبر 2026</p>
+                            <p class="mb-2">📍 المكان: دمشق</p>
+                            <p class="card-text">أمسية فنية تجمع المواهب والإبداعات الطلابية.</p>
+                            <a href="event.html?id=9" class="btn btn-primary mt-auto">التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <p id="noResults" class="text-center mt-4" style="display:none;">
+                    لا توجد فعاليات مطابقة لبحثك.
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- زر العودة للأعلى -->
+    <button id="backToTop" type="button" aria-label="العودة للأعلى">↑</button>
+
+    <!-- الفوتر: معلومات التواصل + السوشيال + حقوق النشر -->
+    <footer class="text-white py-4 mt-5">
+        <div class="container">
+
+            <div class="row g-4 text-center text-md-start">
+
+                <div class="col-md-4">
+                    <h5>دليل فعاليات الجامعة الافتراضية</h5>
+                    <p class="mb-0">اكتشف الفعاليات وكن جزءاً من مجتمعنا.</p>
+                </div>
+
+                <div class="col-md-4">
+                    <h6>تواصل معنا</h6>
+                    <p class="mb-1">📧 info@events-guide.com</p>
+                    <p class="mb-0">🏫 الجامعة الافتراضية السورية</p>
+                </div>
+
+                <div class="col-md-4">
+                    <h6>تابعنا</h6>
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener" class="mx-2">فيسبوك</a>
+                    <a href="https://www.instagram.com" target="_blank" rel="noopener" class="mx-2">انستغرام</a>
+                    <a href="https://t.me" target="_blank" rel="noopener" class="mx-2">تلغرام</a>
+                    <a href="https://www.youtube.com" target="_blank" rel="noopener" class="mx-2">يوتيوب</a>
+                </div>
+
+            </div>
+
+            <hr>
+            <p class="text-center mb-0">جميع الحقوق محفوظة © 2026</p>
+
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ملف الجافاسكربت تبعنا -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

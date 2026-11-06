@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الفعالية | دليل فعاليات الجامعة الافتراضية</title>
+
+    <!-- أيقونة الموقع -->
+    <link rel="icon" type="image/jpeg" href="assets/img/favicon.jpg">
+
+    <!-- Bootstrap RTL من الـ CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+
+    <!-- خط Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- ملف التنسيق تبعنا -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- الهيدر: الشعار + شريط التنقل (نفسه بكل الصفحات) -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+
+                <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+                    <img src="assets/img/logo.jpg" alt="شعار الجامعة الافتراضية السورية" class="brand-logo">
+                    دليل فعاليات الجامعة الافتراضية
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-label="القائمة">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">الرئيسية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="events.html">كل الفعاليات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="event.html">تفاصيل الفعالية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">عن الدليل</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">اتصل بنا</a>
+                        </li>
+                    </ul>
+
+                    <!-- زر الوضع الليلي -->
+                    <button id="darkToggle" class="btn btn-sm btn-outline-light" type="button"
+                        aria-label="تبديل الوضع الليلي">🌙</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow-1">
+
+        <!-- تفاصيل الفعالية: المحتوى الافتراضي هو الفعالية رقم 1 والجافاسكربت بيبدّله حسب ?id= بالرابط -->
+        <section class="py-5" id="eventDetails">
+            <div class="container">
+
+                <h1 class="section-title mb-4">تفاصيل الفعالية</h1>
+
+                <div class="row g-4">
+
+                    <!-- العمود الرئيسي -->
+                    <div class="col-lg-8">
+
+                        <img id="eventImage" src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1200" class="img-fluid rounded-4 w-100 mb-4" alt="أمسية ثقافية">
+
+                        <span id="eventBadge" class="badge bg-primary mb-3">ثقافة</span>
+
+                        <h2 id="eventTitle" class="mb-3">أمسية ثقافية</h2>
+
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-body">
+                                <p>📅 <strong>التاريخ:</strong> <span id="eventDate">10 نوفمبر 2026</span></p>
+                                <p>🕒 <strong>الوقت:</strong> <span id="eventTime">5:00 مساءً</span></p>
+                                <p class="mb-0">📍 <strong>المكان:</strong> <span id="eventLocation">دمشق</span></p>
+                            </div>
+                        </div>
+
+                        <h4 class="section-title mb-3">وصف الفعالية</h4>
+                        <div id="eventDesc">
+                        <p>ندعوكم للمشاركة في أمسية ثقافية مميزة تجمع المهتمين بالأدب والفنون والثقافة. تهدف الفعالية إلى تبادل الأفكار والخبرات، وتشجيع الحوار والإبداع بين المشاركين.</p>
+                        <p>تتضمن الفعالية فقرات متنوعة وفرصة للتعارف والتواصل مع أشخاص لديهم اهتمامات مشتركة، والحضور مفتوح لكل من يرغب.</p>
+                        </div>
+
+                        <!-- معرض صور صغير -->
+                        <h4 class="section-title mt-4 mb-3">معرض الصور</h4>
+                        <div class="row g-2" id="eventGallery">
+                                <div class="col-4"><img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600" class="gallery-img" alt="صورة من الفعالية" loading="lazy"></div>
+                                <div class="col-4"><img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=600" class="gallery-img" alt="صورة من الفعالية" loading="lazy"></div>
+                                <div class="col-4"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600" class="gallery-img" alt="صورة من الفعالية" loading="lazy"></div>
+                        </div>
+
+                        <!-- أزرار الفعالية -->
+                        <div class="d-flex flex-wrap gap-3 mt-4">
+                            <button class="btn btn-primary" id="calendarButton" type="button">أضف إلى التقويم</button>
+                            <button class="btn btn-outline-primary" id="shareButton" type="button">شارك الفعالية</button>
+                            <button class="btn btn-warning" type="button" data-bs-toggle="modal"
+                                data-bs-target="#bookingModal">احجز مكانك</button>
+                        </div>
+
+                        <p id="eventMessage" class="mt-3"></p>
+
+                    </div>
+
+
+                    <!-- العمود الجانبي -->
+                    <div class="col-lg-4">
+
+                        <div class="card shadow-sm mb-4" id="eventMap">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">موقع الفعالية</h4>
+                                <!-- خريطة ثابتة بصورة -->
+                                <img src="assets/img/map.svg" class="map-img mb-3" alt="خريطة توضيحية للموقع">
+                            </div>
+                        </div>
+
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">معلومات إضافية</h4>
+                                <p id="eventLocationText">تقام الفعالية في مدينة دمشق.</p>
+                                <p>نوع الفعالية: <span id="eventType">ثقافة</span></p>
+                                <p>الفئة المستهدفة: <span id="eventAudience">الطلاب والمهتمون بالثقافة</span></p>
+                                <p>رسوم المشاركة: <span id="eventFee">مجانية</span></p>
+                                <a href="events.html" class="btn btn-primary w-100">العودة إلى جميع الفعاليات</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- فعاليات ذات صلة -->
+        <section class="py-5 categories-section">
+            <div class="container">
+                <h2 class="section-title mb-4">فعاليات ذات صلة</h2>
+                <div class="row g-4" id="relatedEvents">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800" class="card-img-top" alt="ملتقى الإبداع الجامعي" loading="lazy">
+                            <div class="card-body">
+                                <span class="badge bg-primary mb-2">ثقافة</span>
+                                <h5 class="card-title">ملتقى الإبداع الجامعي</h5>
+                                <p class="small mb-2">📅 8 نوفمبر 2026 - 📍 أونلاين</p>
+                                <a href="event.html?id=7" class="btn btn-primary">التفاصيل</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800" class="card-img-top" alt="يوم التكنولوجيا" loading="lazy">
+                            <div class="card-body">
+                                <span class="badge bg-secondary mb-2">تقنية</span>
+                                <h5 class="card-title">يوم التكنولوجيا</h5>
+                                <p class="small mb-2">📅 12 نوفمبر 2026 - 📍 دمشق</p>
+                                <a href="event.html?id=5" class="btn btn-primary">التفاصيل</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=800" class="card-img-top" alt="حفل موسيقي" loading="lazy">
+                            <div class="card-body">
+                                <span class="badge bg-warning text-dark mb-2">موسيقى</span>
+                                <h5 class="card-title">حفل موسيقي</h5>
+                                <p class="small mb-2">📅 20 نوفمبر 2026 - 📍 أونلاين</p>
+                                <a href="event.html?id=3" class="btn btn-primary">التفاصيل</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- نافذة الحجز (Modal) - حجز وهمي فقط -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookingTitle">حجز مكان في: <span id="bookingEventName"></span></h5>
+                    <button type="button" class="btn-close ms-0 me-auto" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div id="bookingSuccess" class="alert alert-success d-none" role="alert">
+                        تم حجز مكانك بنجاح! (حجز تجريبي)
+                    </div>
+                    <div id="bookingError" class="alert alert-danger d-none" role="alert">
+                        يرجى إدخال الاسم وبريد إلكتروني صحيح.
+                    </div>
+
+                    <form id="bookingForm" novalidate>
+                        <div class="mb-3">
+                            <label for="bookName" class="form-label">الاسم الكامل</label>
+                            <input type="text" class="form-control" id="bookName" placeholder="اسمك الكامل">
+                        </div>
+                        <div class="mb-3">
+                            <label for="bookEmail" class="form-label">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="bookEmail" placeholder="example@email.com">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">تأكيد الحجز</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- زر العودة للأعلى -->
+    <button id="backToTop" type="button" aria-label="العودة للأعلى">↑</button>
+
+    <!-- الفوتر: معلومات التواصل + السوشيال + حقوق النشر -->
+    <footer class="text-white py-4 mt-5">
+        <div class="container">
+
+            <div class="row g-4 text-center text-md-start">
+
+                <div class="col-md-4">
+                    <h5>دليل فعاليات الجامعة الافتراضية</h5>
+                    <p class="mb-0">اكتشف الفعاليات وكن جزءاً من مجتمعنا.</p>
+                </div>
+
+                <div class="col-md-4">
+                    <h6>تواصل معنا</h6>
+                    <p class="mb-1">📧 info@events-guide.com</p>
+                    <p class="mb-0">🏫 الجامعة الافتراضية السورية</p>
+                </div>
+
+                <div class="col-md-4">
+                    <h6>تابعنا</h6>
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener" class="mx-2">فيسبوك</a>
+                    <a href="https://www.instagram.com" target="_blank" rel="noopener" class="mx-2">انستغرام</a>
+                    <a href="https://t.me" target="_blank" rel="noopener" class="mx-2">تلغرام</a>
+                    <a href="https://www.youtube.com" target="_blank" rel="noopener" class="mx-2">يوتيوب</a>
+                </div>
+
+            </div>
+
+            <hr>
+            <p class="text-center mb-0">جميع الحقوق محفوظة © 2026</p>
+
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ملف الجافاسكربت تبعنا -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
